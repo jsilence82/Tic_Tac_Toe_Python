@@ -1,7 +1,6 @@
 class Board:
     def __init__(self):
-        self.board = [[str(i) for i in range(1, 10)]]
-        self.board = [self.board[i:i+3] for i in range(0, 9, 3)]
+        self.board = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
 
     def get_board(self):
         return self.board
