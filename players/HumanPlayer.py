@@ -3,21 +3,21 @@ from players.Player import Player
 
 class HumanPlayer(Player):
 
-    def init(self, playersMark):
-        super().init("name", playersMark)
+    def __init__(self, playersMark):
+        super().__init__("name", playersMark)
         playersName = input("Give player " + str(Player.playerNumber) + " a name: ")
-        self.setPlayerName(playersName)
-        print(self.getPlayerName() + " will play as " + self.getPlayersMark())
+        self.set_player_name(playersName)
+        print(self.get_player_name() + " will play as " + self.get_players_mark())
 
-    def getPlayerName(self):
-        return super().getPlayerName()
+    def get_player_name(self):
+        return super().get_player_name()
 
-    def getPlayersMark(self):
-        return super().getPlayersMark()
+    def get_players_mark(self):
+        return super().get_players_mark()
 
-    def pickASpace(self):
-        pick = int(input("It is " + self.getPlayerName() + "'s turn: "))
+    def pick_a_space(self):
+        pick = int(input("It is " + self.get_player_name() + "'s turn: "))
         if pick <= 9 and pick > 0:
             return pick
         print("Not a valid space. Try again.")
-        return self.pickASpace()
+        return self.pick_a_space()

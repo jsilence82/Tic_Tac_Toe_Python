@@ -8,18 +8,18 @@ class AI(Player):
         self.computer = players_mark
         self.opponent = "O" if players_mark == "X" else "X"
         self.mapped = {i: str(i) for i in range(1, 10)}
-        print(f"{self.getPlayerName()} will play as {self.getPlayersMark()}")
+        print(f"{self.get_player_name()} will play as {self.get_players_mark()}")
 
-    def pickASpace(self):
+    def pick_a_space(self):
         print("The AI evaluates and is picking...")
-        updated_map = self.updateMapped()
+        updated_map = self.update_mapped()
         return self.findBestMove(updated_map)
 
-    def updateMapped(self):
+    def update_mapped(self):
         count = 1
         for i in range(3):
             for j in range(3):
-                self.mapped[count] = self.board.getBoard()[i][j]
+                self.mapped[count] = self.board.get_board()[i][j]
                 count += 1
         return self.mapped
 

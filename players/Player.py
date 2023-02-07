@@ -9,11 +9,11 @@ class Player:
         Player.playerNumber += 1
 
 
-    def getPlayerName(self):
+    def get_player_name(self):
         return self.playerName
 
 
-    def setPlayerName(self, playerName):
+    def set_player_name(self, playerName):
         self.playerName = playerName
 
 
@@ -21,9 +21,9 @@ class Player:
         Player.playerNumber -= 1
 
 
-    def getPlayersMark(self):
+    def get_players_mark(self):
         return self.playersMark
 
 
-    def pickASpace(self):
+    def pick_a_space(self):
         pass
