@@ -13,7 +13,7 @@ class AI(Player):
     def pick_a_space(self):
         print("The AI evaluates and is picking...")
         update_map = self.update_mapped()
-        return self.findBestMove(update_map)
+        return self.find_best_move(update_map)
 
     def update_mapped(self):
         count = 1
@@ -40,7 +40,7 @@ class AI(Player):
                 return False
         return True
 
-    def findBestMove(self, mapped):
+    def find_best_move(self, mapped):
         best_value = -1000
         best_move = -1
 
@@ -48,7 +48,7 @@ class AI(Player):
             if space not in [self.computer, self.opponent]:
                 temp = space
                 mapped[move] = self.computer
-                move_value = self.minMax(mapped, 0, False)
+                move_value = self.min_max(mapped, 0, False)
                 mapped[move] = temp
 
                 if move_value > best_value:
@@ -56,7 +56,7 @@ class AI(Player):
                     best_value = move_value
         return best_move
 
-    def minMax(self, mapped, depth, is_max):
+    def min_max(self, mapped, depth, is_max):
         score = self.evaluate(mapped)
         if score == 10:
             return score
@@ -70,7 +70,7 @@ class AI(Player):
                 if space not in [self.computer, self.opponent]:
                     temp = space
                     mapped[move] = self.computer
-                    best = max(best, self.minMax(mapped, depth + 1, False))
+                    best = max(best, self.min_max(mapped, depth + 1, False))
                     mapped[move] = temp
             return best
         else:
@@ -79,6 +79,6 @@ class AI(Player):
                 if space not in [self.computer, self.opponent]:
                     temp = space
                     mapped[move] = self.opponent
-                    best = min(best, self.minMax(mapped, depth + 1, True))
+                    best = min(best, self.min_max(mapped, depth + 1, True))
                     mapped[move] = temp
             return best

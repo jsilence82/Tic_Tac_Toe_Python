@@ -2,6 +2,7 @@ from Board import Board
 from SelectionScreen import SelectionScreen
 from players import Factory
 
+
 class TicTacToe:
 
     def __init__(self):

@@ -55,5 +55,5 @@ class Board:
         rows = [all(cell == player_mark for cell in row) for row in self.board]
         cols = [all(self.board[i][j] == player_mark for i in range(3)) for j in range(3)]
         diagonal1 = all(self.board[i][i] == player_mark for i in range(3))
-        diagonal2 = all(self.board[i][ 2 -i] == player_mark for i in range(3))
+        diagonal2 = all(self.board[i][2 - i] == player_mark for i in range(3))
         return any(rows + cols + [diagonal1, diagonal2])
