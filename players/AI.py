@@ -12,8 +12,8 @@ class AI(Player):
 
     def pick_a_space(self):
         print("The AI evaluates and is picking...")
-        updated_map = self.update_mapped()
-        return self.findBestMove(updated_map)
+        update_map = self.update_mapped()
+        return self.findBestMove(update_map)
 
     def update_mapped(self):
         count = 1
@@ -33,8 +33,9 @@ class AI(Player):
                     return -10
         return 0
 
-    def mapIsFull(self):
-        for value in self.mapped.values():
+    @staticmethod
+    def map_is_full(mapped):
+        for value in mapped.values():
             if value in [str(i) for i in range(1, 10)]:
                 return False
         return True
@@ -61,10 +62,10 @@ class AI(Player):
             return score
         if score == -10:
             return score
-        if self.mapIsFull():
+        if self.map_is_full(mapped):
             return 0
-        best = -1000
         if is_max:
+            best = -1000
             for move, space in mapped.items():
                 if space not in [self.computer, self.opponent]:
                     temp = space
@@ -77,7 +78,7 @@ class AI(Player):
             for move, space in mapped.items():
                 if space not in [self.computer, self.opponent]:
                     temp = space
-                    mapped[move] = self.computer
-                    best = max(best, self.minMax(mapped, depth + 1, True))
+                    mapped[move] = self.opponent
+                    best = min(best, self.minMax(mapped, depth + 1, True))
                     mapped[move] = temp
             return best

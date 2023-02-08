@@ -2,27 +2,25 @@ from Board import Board
 from SelectionScreen import SelectionScreen
 from players import Factory
 
-
 class TicTacToe:
-    player1 = None
-    player2 = None
-
 
     def __init__(self):
         self.game_loop()
+        self.player1 = None
+        self.player2 = None
 
     def player_create(self, board):
         select = SelectionScreen()
         player = select.select_player(1)
         opponent = select.select_player(2)
-        TicTacToe.player1 = Factory.player_factory(player, "X", board)
-        TicTacToe.player2 = Factory.player_factory(opponent, "O", board)
+        self.player1 = Factory.player_factory(player, "X", board)
+        self.player2 = Factory.player_factory(opponent, "O", board)
 
     def game_loop(self):
         board = Board()
         self.player_create(board)
 
-        players = [TicTacToe.player1, TicTacToe.player2]
+        players = [self.player1, self.player2]
         turn = 0
         board.print_board()
         while True:
@@ -42,5 +40,5 @@ class TicTacToe:
                         break
                     else:
                         turn = (turn + 1) % 2
-        TicTacToe.player1.dispose()
-        TicTacToe.player2.dispose()
+        self.player1.dispose()
+        self.player2.dispose()

@@ -1,11 +1,19 @@
-from SelectionScreen import SelectionScreen
 from TicTacToe import TicTacToe
 
 if __name__ == "__main__":
-    # SelectionScreen().ascii_art()
-    TicTacToe()
-    input_str = input("Another game? ")
-    while input_str.lower() != "n":
+    print("Welcome to Tic Tac Toe!")
+    print()
+    while True:
+        TicTacToe()
         input_str = input("Another game? ")
-        if input_str.lower() not in ["y", "n"]:
-            input_str = input("Y or N? ")
+        replay_flag = True
+        while True:
+            if input_str.lower() not in ["y", "n"]:
+                input_str = input("Y or N? ")
+            if input_str.lower() == "y":
+                break
+            if input_str.lower() == "n":
+                replay_flag = False
+                break
+        if replay_flag is False:
+            break
